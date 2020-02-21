@@ -49,12 +49,7 @@ namespace Stollie.Medbay
                 if (MyAPIGateway.Session == null)
                     return;
 
-                var isHost = MyAPIGateway.Session.OnlineMode == MyOnlineModeEnum.OFFLINE ||
-                             MyAPIGateway.Multiplayer.IsServer;
-
-                var isDedicatedHost = isHost && MyAPIGateway.Utilities.IsDedicated;
-
-                if (isDedicatedHost)
+                if (!MyAPIGateway.Multiplayer.IsServer || MyAPIGateway.Session.OnlineMode != MyOnlineModeEnum.OFFLINE)
                     return;
 
                 // Check if medbay is working and is occupied.
@@ -86,7 +81,7 @@ namespace Stollie.Medbay
                     {
                         if (healthStat.MaxValue - occupantHealth < amountToHeal)
                         {
-                            MyVisualScriptLogicProvider.SetPlayersHealth(occupantEntityId, 100.0f);
+                            MyVisualScriptLogicProvider.SetPlayersHealth(occupantEntityId, healthStat.MaxValue);
                         }
                         else
                         {
