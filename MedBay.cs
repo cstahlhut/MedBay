@@ -20,7 +20,7 @@ namespace Stollie.Medbay
     {
         MyObjectBuilder_EntityBase objectBuilder = null;
         IMyCryoChamber medBay = null;
-        float amountToHeal = 10;
+        readonly float amountToHeal = 10;
         int tick = 0;
 
         public override void Init(MyObjectBuilder_EntityBase objectBuilder)
