@@ -20,7 +20,6 @@ namespace Stollie.Medbay
     {
         MyObjectBuilder_EntityBase objectBuilder = null;
         IMyCryoChamber medBay = null;
-        float amountToHeal;
         int tick = 0;
 
         public override void Init(MyObjectBuilder_EntityBase objectBuilder)
@@ -79,7 +78,7 @@ namespace Stollie.Medbay
 
                     if (tick % 50 == 0 && occupantHealth < healthStat.MaxValue)
                     {
-                        amountToHeal = healthStat.MaxValue / 10;
+                        float amountToHeal = healthStat.MaxValue / 10;
 
                         if (healthStat.MaxValue - occupantHealth < amountToHeal)
                         {
